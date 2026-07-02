@@ -1,5 +1,8 @@
 'use client'
 
+/* eslint-disable react/set-state-in-effect -- This hook coordinates a persisted multi-step admin wizard and intentionally syncs state after drafts, assets, signature progress, and derived form inputs change. */
+/* eslint-disable react-you-might-not-need-an-effect/no-adjust-state-on-prop-change, react-you-might-not-need-an-effect/no-chain-state-updates, react-you-might-not-need-an-effect/no-derived-state, react-you-might-not-need-an-effect/no-event-handler -- The synchronized effects replace prior render-time state updates and preserve draft/signature recovery behavior. */
+
 import type { ChangeEvent } from 'react'
 import type {
   LoadedSignaturePlan,
@@ -1437,7 +1440,7 @@ export function useAdminCreateEventForm({
   useEffect(function loadMainCategoriesOnMount() {
     async function loadMainCategories() {
       try {
-        const response = await fetch('/admin/api/main-tags')
+        const response = await fetchAdminApi('/main-tags')
         if (!response.ok) {
           throw new Error(`Failed to load categories (${response.status})`)
         }
