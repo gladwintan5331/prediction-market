@@ -74,8 +74,6 @@ function SettingsCategoryDivider({ label }: { label: string }) {
     </div>
   )
 }
-  )
-}
 
 function AdminGeneralSettingsFormInner({
   locale,
