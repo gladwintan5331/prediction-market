@@ -2,7 +2,7 @@ export const POLYGON_MAINNET_CHAIN_ID = 137
 
 export const AMOY_CHAIN_ID = 80_002
 
-export type DefaultNetworkKey = 'polygon' | 'amoy'
+export type DefaultNetworkKey = 'polygon' 
 
 export function parseNetworkChainId(value: string | number | null | undefined, fallback = POLYGON_MAINNET_CHAIN_ID) {
   const parsed = typeof value === 'number' ? value : Number(value?.trim() ?? '')
